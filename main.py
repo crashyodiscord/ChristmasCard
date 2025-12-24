@@ -118,12 +118,22 @@ with col2:
                 background-position: center;
                 background-color: transparent;
                 border: none;
-                height: 250px;
-                width: 100%; 
+                
+                /* FORCE DIMENSIONS */
+                height: 250px !important;
+                min-height: 250px !important; 
+                width: 100% !important;
                 border-radius: 20px;
+                
+                /* Remove default padding so the image fills the space */
+                padding: 0 !important;
                 transition: transform 0.1s;
             }
-            div.stButton > button:first-child p { display: none; }
+
+            /* HIDE TEXT (But keep structure so it doesn't collapse) */
+            div.stButton > button:first-child p { 
+                color: transparent !important;
+            }
             
             /* Make it pulse on hover */
             div.stButton > button:hover {
@@ -131,13 +141,13 @@ with col2:
                 transform: scale(1.05);
                 box-shadow: 0px 0px 20px rgba(255,255,255,0.8);
             }
+            
             /* Make it shrink slightly on click */
             div.stButton > button:active {
                 transform: scale(0.95);
             }
             </style>
         """, unsafe_allow_html=True)
-
         # THE LOGIC
         if st.button("BELLY_BUTTON"):
             # Increment the counter in session state
